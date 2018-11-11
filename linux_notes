@@ -1,0 +1,4 @@
+#Migrating installed apps
+oldmachine$ sudo dpkg --get-selections > installedsoftware
+newmachine$ sudo dpkg --set-selections < installedsoftware
+newmachine$ sudo apt-get --show-upgraded dselect-upgrade
