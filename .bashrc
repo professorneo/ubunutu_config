@@ -59,7 +59,9 @@ fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\$ '
+#    PS1='${debian_chroot:+($debian_chroot)}\u@ \w\$ '
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h: \w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -105,10 +107,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.touchpad_settings.sh ]; then
-    . ~/.touchpad_settings.sh
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -119,3 +117,17 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#Configuration for Franhoufer env
+if [ $USER == 'mansour' ]; then
+#export PATH=$PATH:/opt/gcc-arm-none-eabi-7-2017-q4-major/bin
+export PATH=$PATH:/opt/gcc-arm-none-eabi-7-2018-q2-update/bin/
+
+#Configuration for home environment
+else
+if [ -f ~/.touchpad_settings.sh ]; then
+    . ~/.touchpad_settings.sh
+fi
+fi
+
+
